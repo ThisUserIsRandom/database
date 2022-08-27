@@ -96,28 +96,6 @@ def insertData(DatabaseName,tableName):#,DataToInsert
         writeInFile = open(f'databases/{DatabaseName}/{tableName}.py','w')
         writeInFile.write(f'{tableName}= {tempinstanceData}')
         writeInFile.close()
-
-        ##################################################
-        # requiredColumn = len(list(tempinstanceData))
-        # keysOfTable = list(tempinstanceData)
-        # neededSchemeofTable = list(tempinstanceData[list(tempinstanceData)[0]])
-        # for data in neededSchemeofTable:
-        #     if neededSchemeofTable.index(data) <requiredColumn:
-        #         print('|'+neededSchemeofTable[neededSchemeofTable.index(data)]+'|  ',end='')
-        #     else:
-        #         continue
-        # print('\n')
-        # for x in keysOfTable:
-        #     if keysOfTable.index(x) == 0:
-        #         continue
-        #     else:
-        #         for i in list(tempinstanceData[x]):
-        #             if list(tempinstanceData[x]).index(i) < requiredColumn:
-        #                 print(tempinstanceData[x][i],'    ',end='')
-        #             else:
-        #                 continue
-        #         print('\n')
-        #################################################
     verifyData(Data)
     
 # insertData(tempDB,tableName)

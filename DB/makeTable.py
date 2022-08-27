@@ -11,18 +11,20 @@ def check_database(selectedDatabase):
 
 # if __name__ == 'main':
 def makeDatabase():
+    databaseColumn = 1
     dataBaseName = input("[+] Enter name of table to make :") 
-    # try:
-    databaseColumn = int(input("[+] Enter number of column to make :"))
-    # except:
-    #     print("[-]input can only be integer")
+    try:
+        databaseColumn = int(input("[+] Enter number of column to make :"))
+    except:
+        print("[-]input can only be integer")
+        makeDatabase()
     Scheme = {}
     for data in range(0,databaseColumn):
         columnName = input(f'[+] enter name of column no.{data+1} :')
         while True:
             possibleOutputs = (0,1) 
             try:
-                PrimaryKeyInput = int(input('[+] Is this column contain primary ket (0 for no , 1 for yes) :'))
+                PrimaryKeyInput = int(input('[+] Is this column contain primary key (0 for no , 1 for yes) :'))
             except:
                 print("[-]input can only be integer")
             if PrimaryKeyInput not in possibleOutputs:

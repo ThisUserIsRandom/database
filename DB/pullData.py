@@ -1,6 +1,6 @@
 import importlib
 
-def makeLiteralTable(DatabaseName,TableName):
+def makeLiteralTable(DatabaseName,TableName,columns):
     TableInfo = importlib.import_module(f'databases.{DatabaseName}.{TableName}')
     cache_TableInfo = importlib.import_module(f'databases.{DatabaseName}.cache_{TableName}')
     precious = TableInfo.__dict__.get(f'{TableName}')
@@ -22,14 +22,16 @@ def makeLiteralTable(DatabaseName,TableName):
             tempList = []
         # print(MainList)
         for column in list(myprecious):
+            if column in columns or columns==['*']:
             # print(MainList[list(myprecious).index(column)]-len(str(column)))
-            print('| ',column,' '*(MainList[list(myprecious).index(column)]-len(str(column))),' |',end='')
+                print('| ',column,' '*(MainList[list(myprecious).index(column)]-len(str(column))),' |',end='')
             # print(f'{column} max len is {MainList[list(myprecious).index(column)]}')
         #print('_'*sum(MainList))
         for key in list(dictOfdicts):
             for column in list(myprecious):
-                if (dictOfdicts[key][column]) != None:
-                    print('| ',dictOfdicts[key][column],' '*(MainList[list(myprecious).index(column)]-len(str(dictOfdicts[key][column]))),' |',end='')
+                if column in columns or columns==['*']:
+                    if (dictOfdicts[key][column]) != None:
+                        print('| ',dictOfdicts[key][column],' '*(MainList[list(myprecious).index(column)]-len(str(dictOfdicts[key][column]))),' |',end='')
             print('\n')
     calcSpace(precious)
 # makeLiteralTable('newDb','userdata') 
